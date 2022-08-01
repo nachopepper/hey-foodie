@@ -5,9 +5,15 @@ namespace App\Http\Controllers;
 use App\Http\Requests\potion\StorePotion;
 use App\Models\Potion;
 use Exception;
+use Illuminate\Support\Facades\Storage;
 
 class PotionController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth:api');
+    }
 
     public function store(StorePotion $request)
     {
@@ -15,11 +21,10 @@ class PotionController extends Controller
             $name = $request->name;
 
             $potion = Potion::updateOrCreate(['name' => $name]);
-
             return response()->json([
                 'ok' => true,
                 'message' => 'Poción creada con éxito',
-                'potion' => $potion
+                'potion' => $potion,
             ], 200);
         } catch (Exception $e) {
             return response()->json([
@@ -34,7 +39,7 @@ class PotionController extends Controller
     {
         try {
 
-            $potion = Potion::findOrFail($id)->with('ingredients')->get();
+            $potion = Potion::where('id', $id)->with('ingredients')->get();
 
             return response()->json([
                 'ok' => true,

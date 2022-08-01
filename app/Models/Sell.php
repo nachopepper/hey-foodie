@@ -10,14 +10,13 @@ class Sell extends Model
     use HasFactory;
     protected $table = 'sells';
     protected $primaryKey = 'id';
-    public $timestamps = true;
+    public $timestamps = false;
 
     protected $fillable = [
         'potion_id',
         'witch_id',
         'quantity',
         'created_at',
-        'updated_at'
     ];
 
     public function potion()

@@ -10,6 +10,10 @@ use Illuminate\Http\Request;
 
 class RecipeController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:api');
+    }
 
     public function store(StoreRecipe $request)
     {
@@ -40,5 +44,4 @@ class RecipeController extends Controller
             ], 400);
         }
     }
-
 }

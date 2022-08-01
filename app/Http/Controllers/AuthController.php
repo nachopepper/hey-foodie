@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use JWTAuth;
 use Exception;
 
+use Tymon\JWTAuth\Facades\JWTAuth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\auth\AuthRequest;
 use App\Models\User;
@@ -30,6 +30,11 @@ class AuthController extends Controller
         } catch (Exception $e) {
             return response()->json(['message' => $e->getMessage()], 400);
         }
+    }
+
+    public function test()
+    {
+        return response()->json(['message' => 'auth'], 200);
     }
 
     protected function respondWithToken($token)

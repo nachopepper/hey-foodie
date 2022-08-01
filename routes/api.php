@@ -21,6 +21,7 @@ use App\Http\Controllers\WitchController;
 
 Route::group(['middleware' => ['api']], function () {
     Route::post('login', [AuthController::class, 'login']);
+    Route::get('test', [AuthController::class, 'test']);
     Route::apiResource('ingredients', IngredientController::class);
 
     Route::prefix('potions')->group(function () {
@@ -37,3 +38,4 @@ Route::group(['middleware' => ['api']], function () {
     Route::post('recipe', [SellController::class, 'store']);
 
 });
+

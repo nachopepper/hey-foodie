@@ -50,10 +50,6 @@ class IngredientSeeder extends Seeder
             'price' => '65000'
         ],
         [
-            'name' => 'polvo magico',
-            'price' => '3000'
-        ],
-        [
             'name' => 'sal de mar',
             'price' => '3000'
         ],
